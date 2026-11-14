@@ -6,7 +6,6 @@ import Link from "next/link";
 import DashboardNavbar from "@/components/DashboardNavbar";
 import ChatBotPopup from "@/components/ChatBotPopup";
 import {
-  Tractor,
   Activity,
   AlertTriangle,
   Bell,
@@ -16,11 +15,6 @@ import {
   Gauge,
   Sparkles,
   ArrowRight,
-  Radio,
-  ExternalLink,
-  CheckCircle2,
-  Clock,
-  ShieldAlert,
 } from "lucide-react";
 
 export default function BerandaPage() {
@@ -35,52 +29,23 @@ export default function BerandaPage() {
       {/* 1. Navbar Header */}
       <DashboardNavbar activeTab="beranda" />
 
-      {/* 2. Main Body Container */}
+      {/* 2. Main Body Container (Exact Figma Spacing, No Gap) */}
       <main className="max-w-[1280px] w-full mx-auto px-4 lg:px-[64px] py-6 flex-1 flex flex-col gap-6">
-        {/* Identity Banner */}
-        <div
-          className="bg-white border border-[#e2e8f0] rounded-[16px] px-6 py-4 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)] flex flex-col sm:flex-row sm:items-center justify-between gap-4"
-          data-node-id="428:226"
-          data-name="Identity Banner"
-        >
-          <div className="flex items-center gap-4" data-node-id="428:227">
-            <div
-              className="size-[48px] rounded-[12px] bg-[#effaf4] border border-[#d1fae5] flex items-center justify-center text-[#003622] shrink-0"
-              data-node-id="428:228"
-            >
-              <Tractor className="size-6 text-[#003622]" />
-            </div>
-            <div data-node-id="428:235">
-              <h1 className="text-[20px] sm:text-[22px] font-bold text-[#0d1c2e] leading-tight" data-node-id="428:236">
-                Kawan AgroBersama
-              </h1>
-              <p className="text-[13px] text-[#64748b] mt-0.5" data-node-id="428:237">
-                Blok Budidaya Terpadu • 2 Titik Pengamatan
-              </p>
-            </div>
-          </div>
-
-          <div
-            className="flex items-center gap-2 text-[12px] text-[#64748b] bg-[#f8fafc] border border-[#e2e8f0] px-3.5 py-1.5 rounded-full w-fit"
-            data-node-id="428:238"
-          >
-            <Clock className="size-3.5 text-[#94a3b8]" />
-            <span data-node-id="428:239">Terakhir diperbarui: 04 Nov 2026, 09:30 WIB</span>
-          </div>
-        </div>
-
-        {/* Dual Section Row: Status Titik Pantau & Peringatan Utama */}
+        {/* Top Dual Section Row: Status Titik Pantau (Left) & Peringatan Utama (Right) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6" data-node-id="428:240">
           {/* Left Column: Status Titik Pantau (7 cols) */}
           <div className="lg:col-span-7 flex flex-col gap-3" data-node-id="428:241">
             <div className="flex items-center justify-between" data-node-id="428:242">
               <div className="flex items-center gap-2" data-node-id="428:243">
                 <Activity className="size-4 text-[#003622]" />
-                <h2 className="text-[15px] font-bold text-[#0d1c2e]" data-node-id="428:249">
+                <h2 className="text-[16px] font-bold text-[#0d1c2e]" data-node-id="428:249">
                   Status Titik Pantau
                 </h2>
               </div>
-              <span className="text-[12px] font-semibold text-[#16a34a] bg-[#ecfdf5] border border-[#dcfce7] px-2.5 py-0.5 rounded-full" data-node-id="428:250">
+              <span
+                className="text-[13px] font-semibold text-[#16a34a]"
+                data-node-id="428:250"
+              >
                 2 Node Aktif
               </span>
             </div>
@@ -89,23 +54,30 @@ export default function BerandaPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4" data-node-id="428:251">
               {/* Card Node A */}
               <div
-                className="bg-white border border-[#e2e8f0] hover:border-[#cbd5e1] rounded-[16px] p-4.5 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)] flex flex-col justify-between h-[222px] transition-all"
+                className="bg-white border border-[#e2e8f0] rounded-[16px] p-5 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)] flex flex-col justify-between h-[222px]"
                 data-node-id="428:252"
               >
                 <div>
                   <div className="flex items-center justify-between" data-node-id="428:253">
                     <div>
-                      <h3 className="font-bold text-[16px] text-[#0d1c2e]" data-node-id="428:255">Node A</h3>
-                      <p className="text-[12px] text-[#64748b]" data-node-id="428:256">Blok Utara</p>
+                      <h3 className="font-bold text-[18px] text-[#0d1c2e] leading-tight" data-node-id="428:255">
+                        Node A
+                      </h3>
+                      <p className="text-[13px] text-[#64748b] mt-0.5" data-node-id="428:256">
+                        Blok Utara
+                      </p>
                     </div>
-                    <span className="text-[11px] font-semibold text-[#16a34a] bg-[#ecfdf5] px-2 py-0.5 rounded-full flex items-center gap-1" data-node-id="428:258">
+                    <span
+                      className="text-[12px] font-medium text-[#16a34a] flex items-center gap-1"
+                      data-node-id="428:258"
+                    >
                       <span className="size-1.5 rounded-full bg-[#16a34a]" /> Online
                     </span>
                   </div>
 
                   {/* Alert Pill */}
                   <div
-                    className="mt-3.5 bg-[#fef2f2] border border-[#fecaca] text-[#dc2626] text-[12px] font-semibold px-2.5 py-1.5 rounded-[8px] flex items-center gap-1.5"
+                    className="mt-3.5 bg-[#fef2f2] border border-[#fecaca] text-[#dc2626] text-[12px] font-semibold px-2.5 py-1 rounded-[6px] flex items-center gap-1.5 w-fit"
                     data-node-id="428:259"
                   >
                     <AlertTriangle className="size-3.5 shrink-0" />
@@ -113,22 +85,22 @@ export default function BerandaPage() {
                   </div>
 
                   {/* Metrics Row */}
-                  <div className="grid grid-cols-2 gap-2 mt-3.5 pt-2 border-t border-[#f1f5f9]" data-node-id="428:261">
+                  <div className="grid grid-cols-2 gap-2 mt-4" data-node-id="428:261">
                     <div>
-                      <p className="text-[11px] text-[#64748b]">Suhu Udara</p>
-                      <p className="text-[18px] font-bold text-[#0d1c2e]">29°C</p>
+                      <p className="text-[12px] text-[#64748b]">Suhu Udara</p>
+                      <p className="text-[22px] font-bold text-[#0d1c2e] leading-tight mt-0.5">29°C</p>
                     </div>
                     <div>
-                      <p className="text-[11px] text-[#64748b]">Kelembapan</p>
-                      <p className="text-[18px] font-bold text-[#dc2626]">32%</p>
+                      <p className="text-[12px] text-[#64748b]">Kelembapan</p>
+                      <p className="text-[22px] font-bold text-[#dc2626] leading-tight mt-0.5">32%</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between pt-2 border-t border-[#f8fafc] text-[12px]" data-node-id="428:268">
+                <div className="flex items-center justify-between text-[12px] pt-1" data-node-id="428:268">
                   <span className="text-[#94a3b8]" data-node-id="428:269">3 mnt lalu</span>
                   <button
-                    onClick={() => setActiveNodeModal("Node A")}
+                    onClick={() => setActiveNodeModal("Node A (Blok Utara)")}
                     className="text-[#003622] font-semibold hover:underline flex items-center gap-1"
                     data-node-id="428:270"
                   >
@@ -140,23 +112,30 @@ export default function BerandaPage() {
 
               {/* Card Node B */}
               <div
-                className="bg-white border border-[#e2e8f0] hover:border-[#cbd5e1] rounded-[16px] p-4.5 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)] flex flex-col justify-between h-[222px] transition-all"
+                className="bg-white border border-[#e2e8f0] rounded-[16px] p-5 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)] flex flex-col justify-between h-[222px]"
                 data-node-id="428:271"
               >
                 <div>
                   <div className="flex items-center justify-between" data-node-id="428:272">
                     <div>
-                      <h3 className="font-bold text-[16px] text-[#0d1c2e]" data-node-id="428:274">Node B</h3>
-                      <p className="text-[12px] text-[#64748b]" data-node-id="428:275">Blok Selatan</p>
+                      <h3 className="font-bold text-[18px] text-[#0d1c2e] leading-tight" data-node-id="428:274">
+                        Node B
+                      </h3>
+                      <p className="text-[13px] text-[#64748b] mt-0.5" data-node-id="428:275">
+                        Blok Selatan
+                      </p>
                     </div>
-                    <span className="text-[11px] font-semibold text-[#16a34a] bg-[#ecfdf5] px-2 py-0.5 rounded-full flex items-center gap-1" data-node-id="428:277">
+                    <span
+                      className="text-[12px] font-medium text-[#16a34a] flex items-center gap-1"
+                      data-node-id="428:277"
+                    >
                       <span className="size-1.5 rounded-full bg-[#16a34a]" /> Online
                     </span>
                   </div>
 
                   {/* Warning Pill */}
                   <div
-                    className="mt-3.5 bg-[#fffbeb] border border-[#fde68a] text-[#d97706] text-[12px] font-semibold px-2.5 py-1.5 rounded-[8px] flex items-center gap-1.5"
+                    className="mt-3.5 bg-[#fffbeb] border border-[#fde68a] text-[#d97706] text-[12px] font-semibold px-2.5 py-1 rounded-[6px] flex items-center gap-1.5 w-fit"
                     data-node-id="428:278"
                   >
                     <AlertTriangle className="size-3.5 shrink-0" />
@@ -164,22 +143,22 @@ export default function BerandaPage() {
                   </div>
 
                   {/* Metrics Row */}
-                  <div className="grid grid-cols-2 gap-2 mt-3.5 pt-2 border-t border-[#f1f5f9]" data-node-id="428:284">
+                  <div className="grid grid-cols-2 gap-2 mt-4" data-node-id="428:284">
                     <div>
-                      <p className="text-[11px] text-[#64748b]">Suhu Udara</p>
-                      <p className="text-[18px] font-bold text-[#0d1c2e]">27°C</p>
+                      <p className="text-[12px] text-[#64748b]">Suhu Udara</p>
+                      <p className="text-[22px] font-bold text-[#0d1c2e] leading-tight mt-0.5">27°C</p>
                     </div>
                     <div>
-                      <p className="text-[11px] text-[#64748b]">Kelembapan</p>
-                      <p className="text-[18px] font-bold text-[#d97706]">65%</p>
+                      <p className="text-[12px] text-[#64748b]">Kelembapan</p>
+                      <p className="text-[22px] font-bold text-[#d97706] leading-tight mt-0.5">65%</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between pt-2 border-t border-[#f8fafc] text-[12px]" data-node-id="428:291">
+                <div className="flex items-center justify-between text-[12px] pt-1" data-node-id="428:291">
                   <span className="text-[#94a3b8]" data-node-id="428:292">3 mnt lalu</span>
                   <button
-                    onClick={() => setActiveNodeModal("Node B")}
+                    onClick={() => setActiveNodeModal("Node B (Blok Selatan)")}
                     className="text-[#003622] font-semibold hover:underline flex items-center gap-1"
                     data-node-id="428:293"
                   >
@@ -195,32 +174,35 @@ export default function BerandaPage() {
           <div className="lg:col-span-5 flex flex-col gap-3" data-node-id="428:294">
             <div className="flex items-center gap-2" data-node-id="428:295">
               <Bell className="size-4 text-[#dc2626]" />
-              <h2 className="text-[15px] font-bold text-[#0d1c2e]" data-node-id="428:298">
+              <h2 className="text-[16px] font-bold text-[#0d1c2e]" data-node-id="428:298">
                 Peringatan Utama
               </h2>
             </div>
 
             {/* Alert Card */}
             <div
-              className="bg-white border border-[#e2e8f0] rounded-[16px] p-4.5 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)] flex flex-col justify-between h-[222px]"
+              className="bg-white border border-[#e2e8f0] rounded-[16px] p-5 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)] flex flex-col justify-between h-[222px]"
               data-node-id="428:299"
             >
               <div>
                 <div className="flex items-center justify-between" data-node-id="428:300">
-                  <span className="bg-[#fef2f2] border border-[#fecaca] text-[#dc2626] text-[11px] font-semibold px-2 py-0.5 rounded-full flex items-center gap-1" data-node-id="428:301">
+                  <span
+                    className="bg-[#fef2f2] border border-[#fecaca] text-[#dc2626] text-[11px] font-semibold px-2.5 py-0.5 rounded-full flex items-center gap-1"
+                    data-node-id="428:301"
+                  >
                     <AlertTriangle className="size-3" />
                     <span>Segera Periksa</span>
                   </span>
-                  <span className="text-[11px] text-[#94a3b8]" data-node-id="428:303">
+                  <span className="text-[12px] text-[#94a3b8]" data-node-id="428:303">
                     04 Nov 2026, 09:30 WIB
                   </span>
                 </div>
 
-                <p className="text-[12px] font-medium text-[#64748b] mt-1.5" data-node-id="428:304">
+                <p className="text-[13px] font-medium text-[#64748b] mt-1.5" data-node-id="428:304">
                   Node A (Utara)
                 </p>
 
-                {/* Split Content: Text + Thumbnail */}
+                {/* Split Content: Text + Exact 3D Hardware Thumbnail */}
                 <div className="flex items-start gap-3 mt-2" data-node-id="428:305">
                   <div className="flex-1" data-node-id="428:306">
                     <h4 className="text-[14px] font-bold text-[#0d1c2e] leading-snug" data-node-id="428:307">
@@ -231,12 +213,16 @@ export default function BerandaPage() {
                     </p>
                   </div>
 
-                  <div className="size-[58px] rounded-lg overflow-hidden shrink-0 border border-[#e2e8f0] relative" data-node-id="428:309">
+                  <div
+                    className="size-[64px] rounded-lg overflow-hidden shrink-0 border border-[#e2e8f0] bg-slate-50 relative p-1"
+                    data-node-id="428:309"
+                  >
                     <Image
-                      src="/chili-anomaly.jpg"
-                      alt="Thumbnail Anomali"
-                      fill
-                      className="object-cover"
+                      src="/capsi_3d_product_render.png"
+                      alt="Thumbnail Visual Anomali Buah Cabai"
+                      width={64}
+                      height={64}
+                      className="w-full h-full object-contain"
                     />
                   </div>
                 </div>
@@ -244,8 +230,8 @@ export default function BerandaPage() {
 
               {/* CTA Button */}
               <button
-                onClick={() => setActiveNodeModal("Node A")}
-                className="w-full h-[38px] bg-[#003622] hover:bg-[#004d31] text-white text-[13px] font-semibold rounded-[8px] flex items-center justify-center gap-1.5 transition-all shadow-xs"
+                onClick={() => setActiveNodeModal("Node A (Blok Utara)")}
+                className="w-full h-[40px] bg-[#003622] hover:bg-[#004d31] text-white text-[13px] font-semibold rounded-[8px] flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer active:scale-[0.99]"
                 data-node-id="428:315"
               >
                 <span>Lihat Detail & Tindakan</span>
@@ -260,7 +246,7 @@ export default function BerandaPage() {
           <div className="flex items-center justify-between" data-node-id="428:318">
             <div className="flex items-center gap-2" data-node-id="428:319">
               <Thermometer className="size-4 text-[#003622]" />
-              <h2 className="text-[15px] font-bold text-[#0d1c2e]" data-node-id="428:322">
+              <h2 className="text-[16px] font-bold text-[#0d1c2e]" data-node-id="428:322">
                 Ringkasan Kondisi Lingkungan
               </h2>
             </div>
@@ -277,13 +263,13 @@ export default function BerandaPage() {
           {/* 4 Cards Environment Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4" data-node-id="428:329">
             {/* Card Suhu */}
-            <div className="bg-white border border-[#e2e8f0] rounded-[14px] p-4 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)]" data-node-id="428:330">
+            <div className="bg-white border border-[#e2e8f0] rounded-[14px] p-4 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)] h-[84px] flex flex-col justify-between" data-node-id="428:330">
               <div className="flex items-center justify-between text-[#64748b]">
                 <span className="text-[12px]">Suhu Udara</span>
                 <Thermometer className="size-4 text-[#003622]" />
               </div>
-              <div className="flex items-baseline gap-2 mt-2">
-                <span className="text-[22px] font-bold text-[#0d1c2e]">28 °C</span>
+              <div className="flex items-baseline gap-2">
+                <span className="text-[22px] font-bold text-[#0d1c2e] leading-none">28 °C</span>
                 <span className="text-[11px] font-semibold text-[#16a34a] bg-[#ecfdf5] px-2 py-0.5 rounded-full">
                   ● Optimal
                 </span>
@@ -291,13 +277,13 @@ export default function BerandaPage() {
             </div>
 
             {/* Card Kelembapan */}
-            <div className="bg-white border border-[#e2e8f0] rounded-[14px] p-4 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)]" data-node-id="428:340">
+            <div className="bg-white border border-[#e2e8f0] rounded-[14px] p-4 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)] h-[84px] flex flex-col justify-between" data-node-id="428:340">
               <div className="flex items-center justify-between text-[#64748b]">
                 <span className="text-[12px]">Kelembapan Udara (RH)</span>
                 <Droplets className="size-4 text-[#0284c7]" />
               </div>
-              <div className="flex items-baseline gap-2 mt-2">
-                <span className="text-[22px] font-bold text-[#0d1c2e]">75 %</span>
+              <div className="flex items-baseline gap-2">
+                <span className="text-[22px] font-bold text-[#0d1c2e] leading-none">75 %</span>
                 <span className="text-[11px] font-semibold text-[#16a34a] bg-[#ecfdf5] px-2 py-0.5 rounded-full">
                   ● Normal
                 </span>
@@ -305,13 +291,13 @@ export default function BerandaPage() {
             </div>
 
             {/* Card Cahaya */}
-            <div className="bg-white border border-[#e2e8f0] rounded-[14px] p-4 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)]" data-node-id="428:352">
+            <div className="bg-white border border-[#e2e8f0] rounded-[14px] p-4 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)] h-[84px] flex flex-col justify-between" data-node-id="428:352">
               <div className="flex items-center justify-between text-[#64748b]">
                 <span className="text-[12px]">Intensitas Cahaya</span>
                 <Sun className="size-4 text-[#f59e0b]" />
               </div>
-              <div className="flex items-baseline gap-2 mt-2">
-                <span className="text-[22px] font-bold text-[#0d1c2e]">38.2 k Lux</span>
+              <div className="flex items-baseline gap-2">
+                <span className="text-[22px] font-bold text-[#0d1c2e] leading-none">38.2 k Lux</span>
                 <span className="text-[11px] font-semibold text-[#16a34a] bg-[#ecfdf5] px-2 py-0.5 rounded-full">
                   ● Optimal
                 </span>
@@ -319,13 +305,13 @@ export default function BerandaPage() {
             </div>
 
             {/* Card VPD */}
-            <div className="bg-white border border-[#e2e8f0] rounded-[14px] p-4 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)]" data-node-id="428:364">
+            <div className="bg-white border border-[#e2e8f0] rounded-[14px] p-4 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)] h-[84px] flex flex-col justify-between" data-node-id="428:364">
               <div className="flex items-center justify-between text-[#64748b]">
                 <span className="text-[12px]">Defisit Tekanan (VPD)</span>
                 <Gauge className="size-4 text-[#8b5cf6]" />
               </div>
-              <div className="flex items-baseline gap-2 mt-2">
-                <span className="text-[22px] font-bold text-[#0d1c2e]">1.0 kPa</span>
+              <div className="flex items-baseline gap-2">
+                <span className="text-[22px] font-bold text-[#0d1c2e] leading-none">1.0 kPa</span>
                 <span className="text-[11px] font-semibold text-[#16a34a] bg-[#ecfdf5] px-2 py-0.5 rounded-full">
                   ● Ideal
                 </span>
@@ -347,13 +333,16 @@ export default function BerandaPage() {
                   Rekomendasi Agronomi AI
                 </h3>
               </div>
-              <span className="text-[11px] font-semibold text-[#d97706] bg-[#fffbeb] border border-[#fef3c7] px-2.5 py-0.5 rounded-full" data-node-id="428:406">
+              <span
+                className="text-[11px] font-semibold text-[#d97706] bg-[#fffbeb] border border-[#fef3c7] px-2.5 py-0.5 rounded-full"
+                data-node-id="428:406"
+              >
                 Prioritas Hari Ini
               </span>
             </div>
 
             {/* List Items */}
-            <div className="space-y-2.5 pt-1" data-node-id="428:407">
+            <div className="space-y-2 pt-1" data-node-id="428:407">
               <div className="flex items-start gap-2.5 text-[13px] text-[#334155]" data-node-id="428:408">
                 <span className="size-2 rounded-full bg-[#dc2626] mt-1.5 shrink-0" />
                 <p data-node-id="428:410">
@@ -383,7 +372,7 @@ export default function BerandaPage() {
 
       {/* 3. Footer Bar */}
       <footer
-        className="w-full h-[52px] bg-white border-t border-[#e2e8f0] flex items-center justify-center px-6 mt-6"
+        className="w-full h-[52px] bg-white border-t border-[#e2e8f0] flex items-center justify-center px-6"
         data-node-id="428:374"
         data-name="Footer Bar"
       >
@@ -428,7 +417,7 @@ export default function BerandaPage() {
               <div className="p-3 rounded-xl bg-[#fef2f2] border border-[#fecaca] text-[#dc2626]">
                 <p className="font-semibold">Catatan Diagnostik AI:</p>
                 <p className="mt-1 text-[12px] text-[#991b1b]">
-                  {activeNodeModal === "Node A"
+                  {activeNodeModal.includes("Node A")
                     ? "Model EfficientNet-B0 mendeteksi anomali nekrotik pada kanopi atas. Validasi lapangan disarankan sebelum pukul 16:00 WIB."
                     : "Sensor kelembapan tanah resistif mendeteksi laju transpirasi tinggi dengan pengisian lambat. Periksa katup pipa irigasi."}
                 </p>
@@ -443,10 +432,7 @@ export default function BerandaPage() {
                 Tutup
               </button>
               <button
-                onClick={() => {
-                  setActiveNodeModal(null);
-                  // Optionally trigger chat bot
-                }}
+                onClick={() => setActiveNodeModal(null)}
                 className="px-4 py-2 text-[13px] font-semibold text-white bg-[#003622] hover:bg-[#004d31] rounded-lg"
               >
                 Tanya Asisten AI
