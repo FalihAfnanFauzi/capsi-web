@@ -25,7 +25,7 @@ export default function MasukPage() {
       setIsLoading(false);
       setNotification("Berhasil masuk! Mengarahkan ke sistem...");
       setTimeout(() => {
-        router.push("/");
+        router.push("/beranda");
       }, 1200);
     }, 800);
   };
