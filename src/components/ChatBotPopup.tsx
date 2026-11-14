@@ -76,17 +76,14 @@ export default function ChatBotPopup() {
 
   return (
     <>
-      {/* Floating Action Button (FAB) */}
+      {/* Floating Action Button (FAB) - Exact Figma 444:750 (56x56, #d1fae5, border #a7f3d0) */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 size-[56px] rounded-full bg-[#10b981] hover:bg-[#059669] text-[#003622] hover:text-white shadow-[0px_6px_20px_rgba(16,185,129,0.35)] flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none"
+        className="fixed bottom-[24px] right-[48px] z-50 size-[56px] rounded-full bg-[#d1fae5] hover:bg-[#bbf7d0] border border-[#a7f3d0] text-[#0a3d24] shadow-[0px_6px_16px_rgba(10,61,36,0.15)] flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 focus:outline-none"
         aria-label="Buka Asisten Agronomi AI"
         title="Konsultasi Asisten Agronomi AI"
       >
-        {isOpen ? <X className="size-6 text-white" /> : <Bot className="size-7" />}
-        {!isOpen && (
-          <span className="absolute -top-1 -right-1 size-3 bg-[#dc2626] border-2 border-white rounded-full animate-ping" />
-        )}
+        {isOpen ? <X className="size-6 text-[#0a3d24]" /> : <Bot className="size-[28px] text-[#0a3d24]" />}
       </button>
 
       {/* Chat Pop-Up Window */}
