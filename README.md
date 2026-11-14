@@ -32,7 +32,7 @@ Ikuti langkah-langkah di bawah untuk menjalankan proyek ini di laptop masing-mas
 
 ### 1. Clone Repository
 ```bash
-git clone <URL_REPOSITORY_GITHUB>
+git clone https://github.com/FalihAfnanFauzi/capsi-web.git
 cd capsi-web
 ```
 
