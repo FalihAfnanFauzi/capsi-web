@@ -2,6 +2,7 @@
 
 import React, { useState, Suspense } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import DashboardNavbar from "@/components/DashboardNavbar";
 import ChatBotPopup from "@/components/ChatBotPopup";
@@ -22,6 +23,9 @@ import {
   CheckCircle2,
   ChevronRight,
   Sparkles,
+  Camera,
+  Maximize2,
+  X,
 } from "lucide-react";
 
 function MonitoringContent() {
@@ -30,6 +34,7 @@ function MonitoringContent() {
   const [activeNode, setActiveNode] = useState<"A" | "B">(initialNode);
   const [activeMetricTab, setActiveMetricTab] = useState<"Tanah" | "Suhu" | "VPD">("Tanah");
   const [activeHorizonTab, setActiveHorizonTab] = useState<"24J" | "48J" | "72J">("24J");
+  const [cameraModalOpen, setCameraModalOpen] = useState(false);
 
   return (
     <div
@@ -156,7 +161,7 @@ function MonitoringContent() {
 
               <Link
                 href="/peringatan"
-                className="px-[12px] py-[7px] bg-[#dc2626] hover:bg-[#b91c1c] text-white text-[12px] font-semibold rounded-[6px] whitespace-nowrap transition-all"
+                className="px-[12px] py-[7px] bg-[#dc2626] hover:bg-[#b91c1c] text-white text-[12px] font-semibold rounded-[6px] whitespace-nowrap transition-all cursor-pointer"
                 data-node-id="349:555"
               >
                 Detail Tindakan →
@@ -186,7 +191,7 @@ function MonitoringContent() {
 
               <Link
                 href="/peringatan"
-                className="px-[12px] py-[7px] bg-[#d97706] hover:bg-[#b45309] text-white text-[12px] font-semibold rounded-[6px] whitespace-nowrap transition-all"
+                className="px-[12px] py-[7px] bg-[#d97706] hover:bg-[#b45309] text-white text-[12px] font-semibold rounded-[6px] whitespace-nowrap transition-all cursor-pointer"
                 data-node-id="349:778"
               >
                 Detail Tindakan →
@@ -348,16 +353,81 @@ function MonitoringContent() {
           </div>
         </div>
 
-        {/* Row 4: Dual Analytical Grid Row */}
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-[20px]" data-node-id="349:641">
-          {/* Col Left: Tren Kondisi Lahan (Exact 566px width) */}
+        {/* Row 4: Multi-Column Analytical & Camera Grid Row */}
+        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-[16px]">
+          {/* Col 1: Kamera Monitoring Langsung (4 cols / ~365px) - Exact match to user image */}
           <div
-            className="bg-white border border-[#e2e8f0] rounded-[14px] p-[20px] flex flex-col justify-between gap-[12px] shadow-[0_2px_6px_rgba(0,0,0,0.02)]"
+            className="lg:col-span-4 bg-white border border-[#e2e8f0] rounded-[14px] p-[16px] flex flex-col justify-between gap-[10px] shadow-[0_2px_6px_rgba(0,0,0,0.02)]"
+            data-node-id="520:501"
+            data-name="Card Kamera Monitoring"
+          >
+            {/* Header: Kamera (Left) + Langsung (Right: #baf077 & #6b3b00) */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-[8px]">
+                <Camera className="size-[18px] text-[#5c6b66]" />
+                <h4 className="text-[14px] font-bold text-[#102a23]">
+                  Kamera
+                </h4>
+              </div>
+
+              {/* Exact Figma Badge: #baf077 bg, rounded-full, #6b3b00 dot & text */}
+              <div className="bg-[#baf077] px-[10px] py-[3px] rounded-full flex items-center gap-[5px] shadow-2xs">
+                <span className="size-[6px] rounded-full bg-[#6b3b00] animate-pulse" />
+                <span className="text-[12px] font-semibold text-[#6b3b00] leading-none">
+                  Langsung
+                </span>
+              </div>
+            </div>
+
+            {/* Camera Feed Thumbnail Container */}
+            <div
+              className="relative w-full h-[184px] rounded-[12px] overflow-hidden border border-[#e2e8f0] bg-[#0f172a] group cursor-pointer"
+              onClick={() => setCameraModalOpen(true)}
+              title="Klik untuk memperbesar tangkapan kamera kanopi"
+            >
+              <Image
+                src="/chili-camera-photo.jpg"
+                alt="Monitoring Kamera Tanaman Cabai"
+                fill
+                className="object-cover object-center group-hover:scale-105 transition-all duration-300"
+                priority
+              />
+
+              {/* Live Overlay Tags */}
+              <div className="absolute top-2.5 left-2.5 bg-black/60 backdrop-blur-xs text-white text-[11px] font-medium px-2 py-0.5 rounded-[4px] flex items-center gap-1.5">
+                <span className="size-1.5 rounded-full bg-[#10b981] animate-ping" />
+                <span>{activeNode === "A" ? "CAM-01 • Kanopi Utara" : "CAM-02 • Kanopi Selatan"}</span>
+              </div>
+
+              <div className="absolute bottom-2.5 right-2.5 bg-black/60 backdrop-blur-xs text-[#a7f3d0] text-[11px] font-medium px-2 py-0.5 rounded-[4px]">
+                1080p HD • 15 FPS
+              </div>
+            </div>
+
+            {/* Footer / Meta Info */}
+            <div className="flex items-center justify-between text-[12px] pt-1 border-t border-[#f1f5f9]">
+              <span className="text-[#64748b] flex items-center gap-1.5">
+                <span className="size-1.5 rounded-full bg-[#10b981]" />
+                <span>Gateway ESP32 Terhubung</span>
+              </span>
+              <button
+                onClick={() => setCameraModalOpen(true)}
+                className="text-[#134e35] font-semibold hover:underline flex items-center gap-1 cursor-pointer text-[12px]"
+              >
+                <span>Perbesar Citra</span>
+                <ChevronRight className="size-3.5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Col 2: Tren Kondisi Lahan (4 cols / ~380px) */}
+          <div
+            className="lg:col-span-4 bg-white border border-[#e2e8f0] rounded-[14px] p-[16px] flex flex-col justify-between gap-[10px] shadow-[0_2px_6px_rgba(0,0,0,0.02)]"
             data-node-id="349:642"
           >
             {/* Header + Filter Tabs */}
             <div className="flex items-center justify-between" data-node-id="349:643">
-              <h4 className="text-[15px] font-bold text-[#0f172a]" data-node-id="349:644">
+              <h4 className="text-[14px] font-bold text-[#0f172a]" data-node-id="349:644">
                 Tren Kondisi Lahan
               </h4>
 
@@ -369,7 +439,7 @@ function MonitoringContent() {
                   <button
                     key={tab}
                     onClick={() => setActiveMetricTab(tab)}
-                    className={`px-[12px] py-[4px] rounded-[6px] text-[12px] font-medium transition-all ${
+                    className={`px-[8px] py-[3px] rounded-[6px] text-[11px] font-medium transition-all ${
                       activeMetricTab === tab
                         ? "bg-[#134e35] text-white shadow-xs"
                         : "text-[#64748b] hover:text-[#0f172a]"
@@ -383,64 +453,61 @@ function MonitoringContent() {
 
             {/* SVG Chart Area */}
             <div
-              className="relative w-full h-[150px] bg-[#f8fafc] rounded-[10px] p-2 overflow-hidden flex flex-col justify-end"
+              className="relative w-full h-[140px] bg-[#f8fafc] rounded-[10px] p-2 overflow-hidden flex flex-col justify-end"
               data-node-id="349:652"
             >
-              <svg className="w-full h-full" viewBox="0 0 526 140" fill="none">
+              <svg className="w-full h-full" viewBox="0 0 360 130" fill="none">
                 <defs>
-                  <linearGradient id="soilGradient" x1="0" y1="0" x2="0" y2="1">
+                  <linearGradient id="soilGradientM" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="#10b981" stopOpacity="0.25" />
                     <stop offset="100%" stopColor="#10b981" stopOpacity="0.0" />
                   </linearGradient>
-                  <linearGradient id="warningSoilGradient" x1="0" y1="0" x2="0" y2="1">
+                  <linearGradient id="warningSoilGradientM" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.3" />
                     <stop offset="100%" stopColor="#f59e0b" stopOpacity="0.0" />
                   </linearGradient>
                 </defs>
 
                 {/* Horizontal Threshold Line: Ambang 40% */}
-                <line x1="20" y1="75" x2="435" y2="75" stroke="#dc2626" strokeDasharray="4 4" strokeWidth="1.2" />
-                <text x="442" y="79" fill="#dc2626" fontSize="11" fontFamily="Plus Jakarta Sans" fontWeight="600">
+                <line x1="10" y1="68" x2="280" y2="68" stroke="#dc2626" strokeDasharray="4 4" strokeWidth="1.2" />
+                <text x="286" y="72" fill="#dc2626" fontSize="10" fontFamily="Plus Jakarta Sans" fontWeight="600">
                   Ambang 40%
                 </text>
 
                 {activeNode === "A" ? (
                   <>
-                    {/* Node A: Drops from 68% to 32% (below threshold) */}
                     <path
-                      d="M 20 25 C 100 28, 180 32, 260 55 C 320 72, 380 95, 470 115 L 470 135 L 20 135 Z"
-                      fill="url(#warningSoilGradient)"
+                      d="M 10 25 C 80 28, 140 35, 200 55 C 240 70, 270 90, 310 108 L 310 125 L 10 125 Z"
+                      fill="url(#warningSoilGradientM)"
                     />
                     <path
-                      d="M 20 25 C 100 28, 180 32, 260 55 C 320 72, 380 95, 470 115"
+                      d="M 10 25 C 80 28, 140 35, 200 55 C 240 70, 270 90, 310 108"
                       stroke="#d97706"
                       strokeWidth="2.5"
                       strokeLinecap="round"
                     />
-                    {/* Red dot at the current reading */}
-                    <circle cx="470" cy="115" r="5" fill="#dc2626" stroke="#ffffff" strokeWidth="2" />
+                    <circle cx="310" cy="108" r="4.5" fill="#dc2626" stroke="#ffffff" strokeWidth="2" />
                   </>
                 ) : (
                   <>
-                    {/* Node B: Stays in comfortable zone around 65% */}
                     <path
-                      d="M 20 35 C 120 33, 220 38, 320 42 C 380 44, 420 45, 470 48 L 470 135 L 20 135 Z"
-                      fill="url(#soilGradient)"
+                      d="M 10 35 C 90 33, 160 38, 220 42 C 260 44, 280 45, 310 48 L 310 125 L 10 125 Z"
+                      fill="url(#soilGradientM)"
                     />
                     <path
-                      d="M 20 35 C 120 33, 220 38, 320 42 C 380 44, 420 45, 470 48"
+                      d="M 10 35 C 90 33, 160 38, 220 42 C 260 44, 280 45, 310 48"
                       stroke="#10b981"
                       strokeWidth="2.5"
                       strokeLinecap="round"
                     />
-                    <circle cx="470" cy="48" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                    <circle cx="310" cy="48" r="4.5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
                   </>
                 )}
               </svg>
             </div>
 
             {/* Time Axis Row */}
-            <div className="flex items-center justify-between text-[11px] text-[#64748b] px-1" data-node-id="349:660">
+            <div className="flex items-center justify-between text-[10.5px] text-[#64748b] px-1" data-node-id="349:660">
               <span>00.00</span>
               <span>06.00</span>
               <span>12.00</span>
@@ -451,43 +518,43 @@ function MonitoringContent() {
 
             {/* Insight Banner */}
             <div
-              className={`rounded-[8px] px-[12px] py-[8px] text-[12px] flex items-center gap-[8px] ${
+              className={`rounded-[8px] px-[10px] py-[6px] text-[11.5px] flex items-center gap-[6px] ${
                 activeNode === "A"
                   ? "bg-[#fef3c7] border border-[#fde68a] text-[#92400e]"
                   : "bg-[#ecfdf5] border border-[#a7f3d0] text-[#065f46]"
               }`}
               data-node-id="349:665"
             >
-              <span>
+              <span className="truncate">
                 {activeNode === "A"
-                  ? "⚠️ Kelembapan tanah turun di bawah ambang batas optimal (40%) sejak pukul 12.30 WIB."
-                  : "✓ Kelembapan tanah berada dalam zona aman (65%), tren penurunan bertahap dipantau."}
+                  ? "⚠️ Kelembapan tanah turun di bawah ambang batas optimal (40%)."
+                  : "✓ Kelembapan tanah berada dalam zona aman (65%)."}
               </span>
             </div>
           </div>
 
-          {/* Col Right: Prediksi Tanaman (LSTM) (Exact 566px width) */}
+          {/* Col 3: Prediksi Tanaman (LSTM) (4 cols / ~380px) */}
           <div
-            className="bg-white border border-[#e2e8f0] rounded-[14px] p-[20px] flex flex-col justify-between gap-[12px] shadow-[0_2px_6px_rgba(0,0,0,0.02)]"
+            className="lg:col-span-4 bg-white border border-[#e2e8f0] rounded-[14px] p-[16px] flex flex-col justify-between gap-[10px] shadow-[0_2px_6px_rgba(0,0,0,0.02)]"
             data-node-id="349:667"
           >
             {/* Header + Stress Pill + Horizon Tabs */}
             <div className="flex items-center justify-between" data-node-id="349:668">
-              <h4 className="text-[15px] font-bold text-[#0f172a]" data-node-id="349:670">
+              <h4 className="text-[14px] font-bold text-[#0f172a]" data-node-id="349:670">
                 Prediksi & Proyeksi Tanaman
               </h4>
 
-              <div className="flex items-center gap-[8px]">
+              <div className="flex items-center gap-[6px]">
                 {activeNode === "A" ? (
                   <span
-                    className="bg-[#fef3c7] text-[#92400e] text-[11px] font-bold px-[8px] py-[2px] rounded-full"
+                    className="bg-[#fef3c7] text-[#92400e] text-[10.5px] font-bold px-[6px] py-[1.5px] rounded-full"
                     data-node-id="349:672"
                   >
-                    ● Stres Sedang
+                    ● Stres
                   </span>
                 ) : (
                   <span
-                    className="bg-[#ecfdf5] text-[#065f46] text-[11px] font-bold px-[8px] py-[2px] rounded-full"
+                    className="bg-[#ecfdf5] text-[#065f46] text-[10.5px] font-bold px-[6px] py-[1.5px] rounded-full"
                     data-node-id="349:894"
                   >
                     ● Normal
@@ -495,20 +562,20 @@ function MonitoringContent() {
                 )}
 
                 <div
-                  className="flex items-center bg-[#f1f5f9] p-[2px] rounded-[8px]"
+                  className="flex items-center bg-[#f1f5f9] p-[2px] rounded-[6px]"
                   data-node-id="349:674"
                 >
                   {(["24J", "48J", "72J"] as const).map((hz) => (
                     <button
                       key={hz}
                       onClick={() => setActiveHorizonTab(hz)}
-                      className={`px-[8px] py-[3px] rounded-[6px] text-[11px] font-medium transition-all ${
+                      className={`px-[6px] py-[2px] rounded-[4px] text-[10.5px] font-medium transition-all ${
                         activeHorizonTab === hz
                           ? "bg-[#134e35] text-white shadow-xs"
                           : "text-[#64748b] hover:text-[#0f172a]"
                       }`}
                     >
-                      {hz === "24J" ? "24 Jam" : hz === "48J" ? "48 Jam" : "72 Jam"}
+                      {hz === "24J" ? "24J" : hz === "48J" ? "48J" : "72J"}
                     </button>
                   ))}
                 </div>
@@ -517,116 +584,114 @@ function MonitoringContent() {
 
             {/* LSTM Forecast SVG */}
             <div
-              className="relative w-full h-[135px] bg-[#f8fafc] rounded-[10px] p-2 overflow-hidden flex flex-col justify-end"
+              className="relative w-full h-[125px] bg-[#f8fafc] rounded-[10px] p-2 overflow-hidden flex flex-col justify-end"
               data-node-id="349:681"
             >
-              <svg className="w-full h-full" viewBox="0 0 526 125" fill="none">
+              <svg className="w-full h-full" viewBox="0 0 360 115" fill="none">
                 {/* Vertical boundary: Batas Aktual */}
-                <line x1="230" y1="10" x2="230" y2="105" stroke="#94a3b8" strokeDasharray="3 3" strokeWidth="1" />
-                <text x="235" y="20" fill="#64748b" fontSize="10" fontFamily="Plus Jakarta Sans">
+                <line x1="160" y1="10" x2="160" y2="95" stroke="#94a3b8" strokeDasharray="3 3" strokeWidth="1" />
+                <text x="165" y="18" fill="#64748b" fontSize="9.5" fontFamily="Plus Jakarta Sans">
                   Batas Aktual
                 </text>
 
-                {/* Horizontal threshold: Ambang Kritis 40% */}
-                <line x1="20" y1="65" x2="400" y2="65" stroke="#ef4444" strokeDasharray="3 3" strokeWidth="1" />
-                <text x="405" y="69" fill="#ef4444" fontSize="10" fontFamily="Plus Jakarta Sans" fontWeight="600">
-                  Ambang Kritis 40%
+                {/* Horizontal threshold: Ambang 40% */}
+                <line x1="10" y1="58" x2="270" y2="58" stroke="#ef4444" strokeDasharray="3 3" strokeWidth="1" />
+                <text x="276" y="62" fill="#ef4444" fontSize="9.5" fontFamily="Plus Jakarta Sans" fontWeight="600">
+                  Ambang 40%
                 </text>
 
                 {/* Historical Curve */}
                 <path
-                  d="M 30 45 C 90 48, 160 55, 230 75"
+                  d="M 20 40 C 70 42, 120 48, 160 65"
                   stroke="#475569"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                 />
-                <circle cx="230" cy="75" r="4" fill="#0f172a" />
+                <circle cx="160" cy="65" r="3.5" fill="#0f172a" />
 
                 {/* Forecast Projections */}
-                {/* Trajectory 1: Pasif (Red drop) */}
                 <path
-                  d="M 230 75 C 310 88, 390 100, 480 105"
+                  d="M 160 65 C 220 78, 270 90, 330 96"
                   stroke="#dc2626"
                   strokeWidth="2"
                   strokeDasharray="4 4"
                 />
-                <circle cx="480" cy="105" r="3.5" fill="#dc2626" />
+                <circle cx="330" cy="96" r="3" fill="#dc2626" />
 
-                {/* Trajectory 2: Dengan Rekomendasi (Green rebound) */}
                 <path
-                  d="M 230 75 C 310 55, 390 35, 480 32"
+                  d="M 160 65 C 220 45, 270 30, 330 28"
                   stroke="#10b981"
                   strokeWidth="2.5"
                 />
-                <circle cx="480" cy="32" r="4" fill="#10b981" />
+                <circle cx="330" cy="28" r="3.5" fill="#10b981" />
 
                 {/* X-Axis labels */}
-                <text x="30" y="118" fill="#94a3b8" fontSize="10" fontFamily="Plus Jakarta Sans">-12 Jam</text>
-                <text x="195" y="118" fill="#0f172a" fontSize="10" fontFamily="Plus Jakarta Sans" fontWeight="600">
+                <text x="15" y="108" fill="#94a3b8" fontSize="9.5" fontFamily="Plus Jakarta Sans">-12 Jam</text>
+                <text x="135" y="108" fill="#0f172a" fontSize="9.5" fontFamily="Plus Jakarta Sans" fontWeight="600">
                   {activeNode === "A" ? "Sekarang (32%)" : "Sekarang (65%)"}
                 </text>
-                <text x="445" y="118" fill="#10b981" fontSize="10" fontFamily="Plus Jakarta Sans" fontWeight="600">+24 Jam</text>
+                <text x="300" y="108" fill="#10b981" fontSize="9.5" fontFamily="Plus Jakarta Sans" fontWeight="600">+24 Jam</text>
               </svg>
             </div>
 
             {/* 3 Projection Cards */}
-            <div className="grid grid-cols-3 gap-[10px]" data-node-id="349:698">
+            <div className="grid grid-cols-3 gap-[8px]" data-node-id="349:698">
               {activeNode === "A" ? (
                 <>
                   <div
-                    className="bg-[#f8fafc] border border-[#e2e8f0] rounded-[8px] p-[10px] flex flex-col justify-between"
+                    className="bg-[#f8fafc] border border-[#e2e8f0] rounded-[8px] p-[8px] flex flex-col justify-between"
                     data-node-id="349:699"
                   >
-                    <span className="text-[11px] font-bold text-[#64748b]">{"\u002b"}12 JAM</span>
-                    <span className="text-[18px] font-bold text-[#d97706] leading-none my-1">30%</span>
-                    <span className="text-[11px] text-[#64748b] leading-tight">Waspada transpirasi siang</span>
+                    <span className="text-[10px] font-bold text-[#64748b]">{"\u002b"}12 JAM</span>
+                    <span className="text-[16px] font-bold text-[#d97706] leading-none my-1">30%</span>
+                    <span className="text-[10px] text-[#64748b] leading-tight">Waspada siang</span>
                   </div>
 
                   <div
-                    className="bg-[#fef2f2] border border-[#fecaca] rounded-[8px] p-[10px] flex flex-col justify-between"
+                    className="bg-[#fef2f2] border border-[#fecaca] rounded-[8px] p-[8px] flex flex-col justify-between"
                     data-node-id="349:703"
                   >
-                    <span className="text-[11px] font-bold text-[#991b1b]">{"\u002b"}24J PASIF</span>
-                    <span className="text-[18px] font-bold text-[#dc2626] leading-none my-1">24%</span>
-                    <span className="text-[11px] font-medium text-[#b91c1c] leading-tight">Risiko gugur bunga tinggi</span>
+                    <span className="text-[10px] font-bold text-[#991b1b]">{"\u002b"}24J PASIF</span>
+                    <span className="text-[16px] font-bold text-[#dc2626] leading-none my-1">24%</span>
+                    <span className="text-[10px] font-medium text-[#b91c1c] leading-tight">Gugur bunga</span>
                   </div>
 
                   <div
-                    className="bg-[#ecfdf5] border border-[#a7f3d0] rounded-[8px] p-[10px] flex flex-col justify-between"
+                    className="bg-[#ecfdf5] border border-[#a7f3d0] rounded-[8px] p-[8px] flex flex-col justify-between"
                     data-node-id="349:707"
                   >
-                    <span className="text-[11px] font-bold text-[#065f46]">{"\u002b"}24J REKOMENDASI</span>
-                    <span className="text-[18px] font-bold text-[#10b981] leading-none my-1">58%</span>
-                    <span className="text-[11px] font-medium text-[#047857] leading-tight">Rebound zona optimal</span>
+                    <span className="text-[10px] font-bold text-[#065f46]">{"\u002b"}24J REKOM</span>
+                    <span className="text-[16px] font-bold text-[#10b981] leading-none my-1">58%</span>
+                    <span className="text-[10px] font-medium text-[#047857] leading-tight">Optimal</span>
                   </div>
                 </>
               ) : (
                 <>
                   <div
-                    className="bg-[#f8fafc] border border-[#e2e8f0] rounded-[8px] p-[10px] flex flex-col justify-between"
+                    className="bg-[#f8fafc] border border-[#e2e8f0] rounded-[8px] p-[8px] flex flex-col justify-between"
                     data-node-id="349:921"
                   >
-                    <span className="text-[11px] font-bold text-[#64748b]">{"\u002b"}12 JAM</span>
-                    <span className="text-[18px] font-bold text-[#0f172a] leading-none my-1">58%</span>
-                    <span className="text-[11px] text-[#64748b] leading-tight">Kondisi kelembapan terjaga</span>
+                    <span className="text-[10px] font-bold text-[#64748b]">{"\u002b"}12 JAM</span>
+                    <span className="text-[16px] font-bold text-[#0f172a] leading-none my-1">58%</span>
+                    <span className="text-[10px] text-[#64748b] leading-tight">Terjaga baik</span>
                   </div>
 
                   <div
-                    className="bg-[#fffbeb] border border-[#fde68a] rounded-[8px] p-[10px] flex flex-col justify-between"
+                    className="bg-[#fffbeb] border border-[#fde68a] rounded-[8px] p-[8px] flex flex-col justify-between"
                     data-node-id="349:925"
                   >
-                    <span className="text-[11px] font-bold text-[#92400e]">{"\u002b"}24J PASIF</span>
-                    <span className="text-[18px] font-bold text-[#d97706] leading-none my-1">42%</span>
-                    <span className="text-[11px] text-[#92400e] leading-tight">Mendekati ambang kritis</span>
+                    <span className="text-[10px] font-bold text-[#92400e]">{"\u002b"}24J PASIF</span>
+                    <span className="text-[16px] font-bold text-[#d97706] leading-none my-1">42%</span>
+                    <span className="text-[10px] text-[#92400e] leading-tight">Dekat batas</span>
                   </div>
 
                   <div
-                    className="bg-[#ecfdf5] border border-[#a7f3d0] rounded-[8px] p-[10px] flex flex-col justify-between"
+                    className="bg-[#ecfdf5] border border-[#a7f3d0] rounded-[8px] p-[8px] flex flex-col justify-between"
                     data-node-id="349:929"
                   >
-                    <span className="text-[11px] font-bold text-[#065f46]">{"\u002b"}24J REKOMENDASI</span>
-                    <span className="text-[18px] font-bold text-[#10b981] leading-none my-1">64%</span>
-                    <span className="text-[11px] font-medium text-[#047857] leading-tight">Zona optimal produktif</span>
+                    <span className="text-[10px] font-bold text-[#065f46]">{"\u002b"}24J REKOM</span>
+                    <span className="text-[16px] font-bold text-[#10b981] leading-none my-1">64%</span>
+                    <span className="text-[10px] font-medium text-[#047857] leading-tight">Optimal</span>
                   </div>
                 </>
               )}
@@ -648,6 +713,64 @@ function MonitoringContent() {
 
       {/* 4. Interactive Chat Bot Pop-Up & FAB */}
       <ChatBotPopup />
+
+      {/* 5. Modal Perbesar Citra Kamera Kanopi */}
+      {cameraModalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-[16px] max-w-[700px] w-full overflow-hidden shadow-2xl animate-in zoom-in-95 duration-200">
+            <div className="p-4 bg-[#0f172a] text-white flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <Camera className="size-5 text-[#baf077]" />
+                <div>
+                  <h3 className="font-bold text-[15px] leading-tight">
+                    {activeNode === "A" ? "Live Kamera Kanopi CAM-01 (Node A Utara)" : "Live Kamera Kanopi CAM-02 (Node B Selatan)"}
+                  </h3>
+                  <p className="text-[12px] text-[#94a3b8]">ESP32 Gateway • Resolusi 1080p FHD • 15 FPS</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setCameraModalOpen(false)}
+                className="size-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all cursor-pointer"
+              >
+                <X className="size-5" />
+              </button>
+            </div>
+
+            <div className="relative w-full h-[380px] bg-black">
+              <Image
+                src="/chili-camera-photo.jpg"
+                alt="Feed Kamera Resolusi Penuh"
+                fill
+                className="object-contain"
+                priority
+              />
+
+              <div className="absolute top-4 left-4 bg-black/60 text-white text-[12px] px-3 py-1 rounded-md backdrop-blur-xs flex items-center gap-2">
+                <span className="size-2 rounded-full bg-[#10b981] animate-ping" />
+                <span>Live Feed • 09:30 WIB</span>
+              </div>
+
+              {activeNode === "A" && (
+                <div className="absolute top-1/3 left-1/3 border-2 border-red-500 rounded-md p-1 bg-red-500/10 text-white text-[11px] font-bold">
+                  Bercak Anomali Daun/Buah (84%)
+                </div>
+              )}
+            </div>
+
+            <div className="p-4 bg-white flex items-center justify-between border-t border-[#e2e8f0]">
+              <div className="text-[12px] text-[#64748b]">
+                Kamera ini mengambil sampel berkala untuk inferensi model tepi EfficientNet-B0.
+              </div>
+              <button
+                onClick={() => setCameraModalOpen(false)}
+                className="px-4 py-2 bg-[#134e35] text-white text-[13px] font-semibold rounded-[8px] hover:bg-[#0d3624] transition-all cursor-pointer"
+              >
+                Tutup
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
