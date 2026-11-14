@@ -48,7 +48,7 @@ export default function DashboardNavbar({ activeTab = "beranda" }: DashboardNavb
           </Link>
 
           <Link
-            href="#monitoring"
+            href="/monitoring"
             className={`px-[16px] py-[8px] rounded-[8px] font-medium transition-all ${
               activeTab === "monitoring"
                 ? "bg-[#003622] text-white shadow-sm"
@@ -59,7 +59,7 @@ export default function DashboardNavbar({ activeTab = "beranda" }: DashboardNavb
           </Link>
 
           <Link
-            href="#peringatan"
+            href="/peringatan"
             className={`px-[16px] py-[8px] rounded-[8px] font-medium transition-all flex items-center gap-[6px] ${
               activeTab === "peringatan"
                 ? "bg-[#003622] text-white shadow-sm"
@@ -73,7 +73,7 @@ export default function DashboardNavbar({ activeTab = "beranda" }: DashboardNavb
           </Link>
 
           <Link
-            href="#riwayat"
+            href="/riwayat"
             className={`px-[16px] py-[8px] rounded-[8px] font-medium transition-all ${
               activeTab === "riwayat"
                 ? "bg-[#003622] text-white shadow-sm"
