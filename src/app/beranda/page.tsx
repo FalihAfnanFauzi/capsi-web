@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import DashboardNavbar from "@/components/DashboardNavbar";
@@ -17,13 +17,9 @@ import {
   Wind,
   Radio,
   Sparkles,
-  ArrowRight,
-  Clock,
 } from "lucide-react";
 
 export default function BerandaPage() {
-  const [activeNodeModal, setActiveNodeModal] = useState<string | null>(null);
-
   return (
     <div
       className="min-h-screen bg-[#f8fafc] flex flex-col justify-between font-sans antialiased text-[#0f172a]"
@@ -137,13 +133,13 @@ export default function BerandaPage() {
 
                 <div className="flex items-center justify-between text-[12px] pt-[8px]" data-node-id="428:268">
                   <span className="text-[#94a3b8]" data-node-id="428:269">3 mnt lalu</span>
-                  <button
-                    onClick={() => setActiveNodeModal("Node A")}
+                  <Link
+                    href="/monitoring?node=A"
                     className="text-[#0a3d24] font-medium hover:underline text-[13px]"
                     data-node-id="428:270"
                   >
                     Detail →
-                  </button>
+                  </Link>
                 </div>
               </div>
 
@@ -194,13 +190,13 @@ export default function BerandaPage() {
 
                 <div className="flex items-center justify-between text-[12px] pt-[8px]" data-node-id="428:291">
                   <span className="text-[#94a3b8]" data-node-id="428:292">3 mnt lalu</span>
-                  <button
-                    onClick={() => setActiveNodeModal("Node B")}
+                  <Link
+                    href="/monitoring?node=B"
                     className="text-[#0a3d24] font-medium hover:underline text-[13px]"
                     data-node-id="428:293"
                   >
                     Detail →
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -265,13 +261,13 @@ export default function BerandaPage() {
               </div>
 
               {/* CTA Button */}
-              <button
-                onClick={() => setActiveNodeModal("Node A")}
+              <Link
+                href="/peringatan/node-a"
                 className="w-full h-[40px] bg-[#0a3d24] hover:bg-[#002817] text-white text-[13px] font-normal rounded-[8px] flex items-center justify-center transition-all cursor-pointer"
                 data-node-id="428:315"
               >
                 <span>Lihat Detail & Tindakan →</span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { User, Bell, ChevronDown, LogOut, LayoutDashboard, Radio, History, ArrowLeft } from "lucide-react";
+import { User, ChevronDown, LogOut, ArrowLeft } from "lucide-react";
 
 interface DashboardNavbarProps {
   activeTab?: "beranda" | "monitoring" | "peringatan" | "riwayat";

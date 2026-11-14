@@ -13,18 +13,8 @@ import {
   Clock,
   BatteryCharging,
   Thermometer,
-  Droplets,
-  Wind,
-  Sun,
-  Layers,
-  ArrowRight,
-  TrendingDown,
-  TrendingUp,
-  CheckCircle2,
   ChevronRight,
-  Sparkles,
   Camera,
-  Maximize2,
   X,
 } from "lucide-react";
 
@@ -160,7 +150,7 @@ function MonitoringContent() {
               </div>
 
               <Link
-                href="/peringatan"
+                href="/peringatan/node-a"
                 className="px-[12px] py-[7px] bg-[#dc2626] hover:bg-[#b91c1c] text-white text-[12px] font-semibold rounded-[6px] whitespace-nowrap transition-all cursor-pointer"
                 data-node-id="349:555"
               >
@@ -190,7 +180,7 @@ function MonitoringContent() {
               </div>
 
               <Link
-                href="/peringatan"
+                href="/peringatan/node-b"
                 className="px-[12px] py-[7px] bg-[#d97706] hover:bg-[#b45309] text-white text-[12px] font-semibold rounded-[6px] whitespace-nowrap transition-all cursor-pointer"
                 data-node-id="349:778"
               >
