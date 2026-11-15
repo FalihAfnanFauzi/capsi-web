@@ -31,7 +31,7 @@ export default function BerandaPage() {
 
       {/* 2. Main Body Container (Exact Figma Dimensions: 1152px width inside 1280px screen) */}
       <main
-        className="w-full max-w-[1280px] mx-auto px-4 lg:px-[64px] py-[12px] flex-1 flex flex-col justify-between gap-[12px]"
+        className="w-full max-w-[1280px] mx-auto px-4 lg:px-[64px] py-[20px] flex-1 flex flex-col justify-start gap-[16px]"
         data-node-id="428:224"
         data-name="Main Body"
       >
@@ -358,7 +358,7 @@ export default function BerandaPage() {
         {/* Section Rekomendasi & Status Sistem */}
         <div className="w-full" data-node-id="428:396">
           <div
-            className="w-full lg:w-[672px] bg-white border border-[#e2e8f0] rounded-[14px] p-[18px] shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex flex-col gap-[10px]"
+            className="w-full bg-white border border-[#e2e8f0] rounded-[14px] p-[18px] shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex flex-col gap-[10px]"
             data-node-id="428:397"
           >
             <div className="flex items-center justify-between" data-node-id="428:398">

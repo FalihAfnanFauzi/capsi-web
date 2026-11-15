@@ -4,10 +4,7 @@ import React from "react";
 import Link from "next/link";
 import DashboardNavbar from "@/components/DashboardNavbar";
 import ChatBotPopup from "@/components/ChatBotPopup";
-import {
-  Activity,
-  Info,
-} from "lucide-react";
+import { Activity, Info } from "lucide-react";
 
 export default function DetailNodeB() {
   return (
@@ -21,12 +18,12 @@ export default function DetailNodeB() {
 
       {/* 2. Main Body Container (Exact Figma dimensions: 1152px width inside 1280px) */}
       <main
-        className="w-full max-w-[1280px] mx-auto px-4 lg:px-[64px] py-[20px] flex-1 flex flex-col justify-between gap-[16px]"
+        className="w-full max-w-[1280px] mx-auto px-4 lg:px-[64px] py-[24px] flex-1 flex flex-col justify-start gap-[20px]"
         data-node-id="512:4032"
       >
         {/* Row 1: Detail Context Header Bar */}
         <div
-          className="w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-1 border-b border-[#e2e8f0]/60"
+          className="w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-2 border-b border-[#e2e8f0]/60"
           data-node-id="512:4033"
         >
           <div className="flex items-center gap-[16px]" data-node-id="512:4034">
@@ -75,7 +72,7 @@ export default function DetailNodeB() {
 
         {/* Row 2: Detail Content Grid Row (2 Columns: 566px Left, 566px Right) */}
         <div
-          className="w-full grid grid-cols-1 lg:grid-cols-2 gap-[20px]"
+          className="w-full grid grid-cols-1 lg:grid-cols-2 gap-[20px] items-stretch"
           data-node-id="512:4047"
         >
           {/* Left Column: Bukti Telemetri & Tren Kelembapan (566px) */}
@@ -125,9 +122,9 @@ export default function DetailNodeB() {
                 </div>
               </div>
 
-              {/* Inline SVG Telemetry Visual: 24h Trend Chart */}
+              {/* Inline SVG Telemetry Visual: 24h Trend Chart (Seamless within card) */}
               <div
-                className="bg-white border border-[#e2e8f0] rounded-[12px] p-[16px] shadow-xs flex flex-col gap-[12px]"
+                className="pt-3 border-t border-[#f1f5f9] flex flex-col gap-[10px]"
                 data-node-id="512:4125"
               >
                 {/* Header Row */}
@@ -146,9 +143,9 @@ export default function DetailNodeB() {
                 </div>
 
                 {/* SVG Chart Graphic */}
-                <div className="w-full h-[144px] relative" data-node-id="512:4134">
+                <div className="w-full h-[140px] relative" data-node-id="512:4134">
                   <svg
-                    viewBox="0 0 338 144"
+                    viewBox="0 0 338 140"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                     className="w-full h-full overflow-visible"
@@ -156,30 +153,30 @@ export default function DetailNodeB() {
                   >
                     <defs>
                       <linearGradient id="gradientSoilMoisture" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#fed7aa" stopOpacity="0.6" />
+                        <stop offset="0%" stopColor="#fed7aa" stopOpacity="0.55" />
                         <stop offset="100%" stopColor="#fed7aa" stopOpacity="0.02" />
                       </linearGradient>
                     </defs>
 
                     {/* Horizontal Reference Grid Lines */}
-                    <line x1="0" y1="24" x2="338" y2="24" stroke="#f1f5f9" strokeWidth="1" />
-                    <line x1="0" y1="66" x2="338" y2="66" stroke="#f1f5f9" strokeWidth="1" />
-                    <line x1="0" y1="114" x2="338" y2="114" stroke="#f1f5f9" strokeWidth="1" />
+                    <line x1="0" y1="20" x2="338" y2="20" stroke="#f1f5f9" strokeWidth="1" />
+                    <line x1="0" y1="58" x2="338" y2="58" stroke="#f1f5f9" strokeWidth="1" />
+                    <line x1="0" y1="105" x2="338" y2="105" stroke="#f1f5f9" strokeWidth="1" />
 
                     {/* Ambang Kritis 50% Line */}
                     <line
                       x1="0"
-                      y1="81.6"
+                      y1="78"
                       x2="338"
-                      y2="81.6"
+                      y2="78"
                       stroke="#ef4444"
                       strokeWidth="1.5"
                       strokeDasharray="4 4"
                     />
-                    <rect x="5" y="67" width="108" height="15" rx="3" fill="#fee2e2" />
+                    <rect x="5" y="64" width="108" height="15" rx="3" fill="#fee2e2" />
                     <text
                       x="9"
-                      y="78"
+                      y="75"
                       fill="#b91c1c"
                       fontSize="9.5"
                       fontFamily="Plus Jakarta Sans"
@@ -190,23 +187,23 @@ export default function DetailNodeB() {
 
                     {/* Area under curve */}
                     <path
-                      d="M 10 38.4 Q 156 58.8, 318 109.8 L 318 138 L 10 138 Z"
+                      d="M 10 36 C 110 40, 210 65, 320 108 L 320 138 L 10 138 Z"
                       fill="url(#gradientSoilMoisture)"
                     />
 
                     {/* Moisture Trend Curve */}
                     <path
-                      d="M 10 38.4 Q 156 58.8, 318 109.8"
+                      d="M 10 36 C 110 40, 210 65, 320 108"
                       stroke="#ea580c"
                       strokeWidth="2.5"
                       strokeLinecap="round"
                     />
 
                     {/* Point 1: Kemarin 07:00 (65%) */}
-                    <circle cx="10" cy="38.4" r="4" fill="#ffffff" stroke="#ea580c" strokeWidth="2" />
+                    <circle cx="10" cy="36" r="4" fill="#ffffff" stroke="#ea580c" strokeWidth="2" />
                     <text
                       x="16"
-                      y="32"
+                      y="30"
                       fill="#0f172a"
                       fontSize="10"
                       fontFamily="Plus Jakarta Sans"
@@ -216,12 +213,12 @@ export default function DetailNodeB() {
                     </text>
 
                     {/* Point 2: Kemarin 19:00 (~58%) */}
-                    <circle cx="156" cy="62.5" r="3.5" fill="#ffffff" stroke="#ea580c" strokeWidth="2" />
+                    <circle cx="156" cy="58" r="3.5" fill="#ffffff" stroke="#ea580c" strokeWidth="2" />
 
                     {/* Point 3: Hari Ini 22:15 (48%) */}
-                    <circle cx="318" cy="109.8" r="4.5" fill="#ffffff" stroke="#dc2626" strokeWidth="2" />
+                    <circle cx="320" cy="108" r="4.5" fill="#ffffff" stroke="#dc2626" strokeWidth="2" />
                     <text
-                      x="288"
+                      x="292"
                       y="126"
                       fill="#dc2626"
                       fontSize="10.5"
@@ -263,13 +260,13 @@ export default function DetailNodeB() {
           </div>
 
           {/* Right Column: Detail Analisis AI & Protokol Operasional (566px) */}
-          <div className="flex flex-col gap-[14px]" data-node-id="512:4084">
+          <div className="flex flex-col gap-[14px] h-full" data-node-id="512:4084">
             {/* Card 1: Detail Analisis Model AI */}
             <div
               className="bg-white border border-[#e3e8f0] rounded-[12px] p-[16px] shadow-[0_1px_3px_rgba(0,0,0,0.02)] flex flex-col gap-[10px]"
               data-node-id="512:4067"
             >
-              <h3 className="text-[14px] font-bold text-[#0f172a]" data-node-id="512:4068">
+              <h3 className="text-[14px] font-medium text-[#0f172a]" data-node-id="512:4068">
                 🤖 Detail Analisis Model AI • Proyeksi LSTM & Confidence Level
               </h3>
 
@@ -298,14 +295,14 @@ export default function DetailNodeB() {
               >
                 <Info className="size-4 text-[#1d4ed8] shrink-0 mt-0.5" />
                 <p className="text-[11.5px] text-[#1e40af] leading-normal" data-node-id="512:4166">
-                  <strong>Label Honest Uncertainty:</strong> Peringatan AI adalah indikasi awal anomali mikroklimat tanah, bukan klaim mutlak kegagalan tanaman. Verifikasi fisik tetap menjadi prioritas keputusan agronomi.
+                  <strong>ℹ Label Honest Uncertainty:</strong> Peringatan AI adalah indikasi awal anomali mikroklimat tanah, bukan klaim mutlak kegagalan tanaman. Verifikasi fisik tetap menjadi prioritas keputusan agronomi.
                 </p>
               </div>
             </div>
 
-            {/* Card 2: Protokol Lapangan (Hijau Gelap #064e3b) */}
+            {/* Card 2: Protokol Lapangan (Hijau Gelap #064e3b) - Stretches to fill column height */}
             <div
-              className="bg-[#064e3b] text-white rounded-[12px] p-[16px] shadow-[0_4px_16px_rgba(6,78,59,0.18)] flex flex-col justify-between gap-[12px]"
+              className="bg-[#064e3b] text-white rounded-[12px] p-[16px] shadow-[0_4px_16px_rgba(6,78,59,0.18)] flex-1 flex flex-col justify-between gap-[12px]"
               data-node-id="512:4089"
             >
               <div className="flex items-start gap-2.5" data-node-id="512:4090">
@@ -321,14 +318,14 @@ export default function DetailNodeB() {
               </div>
 
               {/* 4 Action Steps for Node B */}
-              <div className="space-y-[8px]" data-node-id="512:4094">
+              <div className="flex-1 flex flex-col justify-between gap-[8px] my-1" data-node-id="512:4094">
                 {/* Step 1 */}
                 <div
-                  className="bg-[#094030]/80 rounded-[8px] px-[10px] py-[8px] flex items-center gap-[10px]"
+                  className="bg-[#094030]/80 rounded-[8px] px-[12px] py-[10px] flex items-center gap-[10px]"
                   data-node-id="512:4095"
                 >
                   <div
-                    className="size-[18px] rounded-full bg-[#a6f2d1] text-[#054f3b] text-[11px] font-bold flex items-center justify-center shrink-0"
+                    className="size-[20px] rounded-full bg-[#a6f2d1] text-[#054f3b] text-[11px] font-bold flex items-center justify-center shrink-0"
                     data-node-id="512:4096"
                   >
                     1
@@ -345,11 +342,11 @@ export default function DetailNodeB() {
 
                 {/* Step 2 */}
                 <div
-                  className="bg-[#094030]/80 rounded-[8px] px-[10px] py-[8px] flex items-center gap-[10px]"
+                  className="bg-[#094030]/80 rounded-[8px] px-[12px] py-[10px] flex items-center gap-[10px]"
                   data-node-id="512:4099"
                 >
                   <div
-                    className="size-[18px] rounded-full bg-[#a6f2d1] text-[#054f3b] text-[11px] font-bold flex items-center justify-center shrink-0"
+                    className="size-[20px] rounded-full bg-[#a6f2d1] text-[#054f3b] text-[11px] font-bold flex items-center justify-center shrink-0"
                     data-node-id="512:4100"
                   >
                     2
@@ -366,11 +363,11 @@ export default function DetailNodeB() {
 
                 {/* Step 3 */}
                 <div
-                  className="bg-[#094030]/80 rounded-[8px] px-[10px] py-[8px] flex items-center gap-[10px]"
+                  className="bg-[#094030]/80 rounded-[8px] px-[12px] py-[10px] flex items-center gap-[10px]"
                   data-node-id="512:4103"
                 >
                   <div
-                    className="size-[18px] rounded-full bg-[#a6f2d1] text-[#054f3b] text-[11px] font-bold flex items-center justify-center shrink-0"
+                    className="size-[20px] rounded-full bg-[#a6f2d1] text-[#054f3b] text-[11px] font-bold flex items-center justify-center shrink-0"
                     data-node-id="512:4104"
                   >
                     3
@@ -387,11 +384,11 @@ export default function DetailNodeB() {
 
                 {/* Step 4 */}
                 <div
-                  className="bg-[#094030]/80 rounded-[8px] px-[10px] py-[8px] flex items-center gap-[10px]"
+                  className="bg-[#094030]/80 rounded-[8px] px-[12px] py-[10px] flex items-center gap-[10px]"
                   data-node-id="512:4107"
                 >
                   <div
-                    className="size-[18px] rounded-full bg-[#a6f2d1] text-[#054f3b] text-[11px] font-bold flex items-center justify-center shrink-0"
+                    className="size-[20px] rounded-full bg-[#a6f2d1] text-[#054f3b] text-[11px] font-bold flex items-center justify-center shrink-0"
                     data-node-id="512:4108"
                   >
                     4
@@ -408,7 +405,7 @@ export default function DetailNodeB() {
               </div>
 
               {/* Rujukan Note */}
-              <div className="pt-1 border-t border-[#047857]/40 text-[11.5px] text-[#a7f3d0]" data-node-id="512:4111">
+              <div className="pt-2 border-t border-[#047857]/40 text-[11.5px] text-[#a7f3d0]" data-node-id="512:4111">
                 🛡 Rujukan: Panduan Teknis Pengendalian HPT Cabai Kementan
               </div>
             </div>

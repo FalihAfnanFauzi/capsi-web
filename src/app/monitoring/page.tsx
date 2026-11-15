@@ -37,7 +37,7 @@ function MonitoringContent() {
 
       {/* 2. Main Body Container (Exact Figma dimensions: 1152px width, 64px padding) */}
       <main
-        className="w-full max-w-[1280px] mx-auto px-4 lg:px-[64px] py-[16px] flex-1 flex flex-col justify-between gap-[16px]"
+        className="w-full max-w-[1280px] mx-auto px-4 lg:px-[64px] py-[20px] flex-1 flex flex-col justify-start gap-[16px]"
         data-node-id="349:522"
       >
         {/* Row 1: Header Title & Switcher Row */}
@@ -347,7 +347,7 @@ function MonitoringContent() {
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-[16px]">
           {/* Col 1: Kamera Monitoring Langsung (4 cols / ~365px) - Exact match to user image */}
           <div
-            className="lg:col-span-4 bg-white border border-[#e2e8f0] rounded-[14px] p-[16px] flex flex-col justify-between gap-[10px] shadow-[0_2px_6px_rgba(0,0,0,0.02)]"
+            className="lg:col-span-4 bg-white border border-[#e2e8f0] rounded-[14px] p-[16px] flex flex-col justify-between gap-[10px] shadow-[0_2px_6px_rgba(0,0,0,0.02)] h-[320px]"
             data-node-id="520:501"
             data-name="Card Kamera Monitoring"
           >
@@ -412,7 +412,7 @@ function MonitoringContent() {
 
           {/* Col 2: Tren Kondisi Lahan (4 cols / ~380px) */}
           <div
-            className="lg:col-span-4 bg-white border border-[#e2e8f0] rounded-[14px] p-[16px] flex flex-col justify-between gap-[10px] shadow-[0_2px_6px_rgba(0,0,0,0.02)]"
+            className="lg:col-span-4 bg-white border border-[#e2e8f0] rounded-[14px] p-[16px] flex flex-col justify-between gap-[10px] shadow-[0_2px_6px_rgba(0,0,0,0.02)] h-[320px]"
             data-node-id="349:642"
           >
             {/* Header + Filter Tabs */}
@@ -515,7 +515,7 @@ function MonitoringContent() {
               }`}
               data-node-id="349:665"
             >
-              <span className="truncate">
+              <span className="text-[11px] leading-tight">
                 {activeNode === "A"
                   ? "⚠️ Kelembapan tanah turun di bawah ambang batas optimal (40%)."
                   : "✓ Kelembapan tanah berada dalam zona aman (65%)."}
@@ -525,7 +525,7 @@ function MonitoringContent() {
 
           {/* Col 3: Prediksi Tanaman (LSTM) (4 cols / ~380px) */}
           <div
-            className="lg:col-span-4 bg-white border border-[#e2e8f0] rounded-[14px] p-[16px] flex flex-col justify-between gap-[10px] shadow-[0_2px_6px_rgba(0,0,0,0.02)]"
+            className="lg:col-span-4 bg-white border border-[#e2e8f0] rounded-[14px] p-[16px] flex flex-col justify-between gap-[10px] shadow-[0_2px_6px_rgba(0,0,0,0.02)] h-[320px]"
             data-node-id="349:667"
           >
             {/* Header + Stress Pill + Horizon Tabs */}

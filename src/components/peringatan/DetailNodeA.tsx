@@ -5,10 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import DashboardNavbar from "@/components/DashboardNavbar";
 import ChatBotPopup from "@/components/ChatBotPopup";
-import {
-  Camera,
-  Info,
-} from "lucide-react";
+import { Info } from "lucide-react";
 
 export default function DetailNodeA() {
   return (
@@ -22,12 +19,12 @@ export default function DetailNodeA() {
 
       {/* 2. Main Body Container (Exact Figma dimensions: 1152px width inside 1280px) */}
       <main
-        className="w-full max-w-[1280px] mx-auto px-4 lg:px-[64px] py-[20px] flex-1 flex flex-col justify-between gap-[16px]"
+        className="w-full max-w-[1280px] mx-auto px-4 lg:px-[64px] py-[24px] flex-1 flex flex-col justify-start gap-[20px]"
         data-node-id="507:3724"
       >
         {/* Row 1: Detail Context Header Bar */}
         <div
-          className="w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-1 border-b border-[#e2e8f0]/60"
+          className="w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-2 border-b border-[#e2e8f0]/60"
           data-node-id="507:3835"
         >
           <div className="flex items-center gap-[16px]" data-node-id="507:3836">
@@ -76,7 +73,7 @@ export default function DetailNodeA() {
 
         {/* Row 2: Detail Content Grid Row (2 Columns: 566px Left, 566px Right) */}
         <div
-          className="w-full grid grid-cols-1 lg:grid-cols-2 gap-[20px]"
+          className="w-full grid grid-cols-1 lg:grid-cols-2 gap-[20px] items-stretch"
           data-node-id="507:3847"
         >
           {/* Left Column: Bukti Visual & Analisis AI (Exact 566px) */}
@@ -87,13 +84,12 @@ export default function DetailNodeA() {
               data-node-id="507:3849"
             >
               <div className="flex items-center justify-between" data-node-id="507:3850">
-                <div className="flex items-center gap-2">
-                  <Camera className="size-4 text-[#064e3b]" />
-                  <h3 className="text-[13.5px] font-bold text-[#0f172a]">
-                    Bukti Pendukung Lapangan
-                  </h3>
-                </div>
-                <span className="text-[12px] text-[#64748b]">09:30 WIB • Resolusi HD</span>
+                <h3 className="text-[14px] font-medium text-[#0f172a]" data-node-id="507:3851">
+                  📷 Bukti Pendukung Lapangan
+                </h3>
+                <span className="text-[12px] text-[#64748b]" data-node-id="507:3852">
+                  09:30 WIB
+                </span>
               </div>
 
               {/* Foto Tangkapan Kamera Lapangan */}
@@ -108,12 +104,6 @@ export default function DetailNodeA() {
                   className="object-cover object-center"
                   priority
                 />
-                <div className="absolute top-2 left-2 bg-black/60 backdrop-blur-xs text-white text-[11px] px-2 py-0.5 rounded-sm">
-                  CAM-01 • Kanopi Atas
-                </div>
-                <div className="absolute bottom-2 right-2 bg-black/60 backdrop-blur-xs text-[#a7f3d0] text-[11px] px-2 py-0.5 rounded-sm">
-                  Confidence: 84%
-                </div>
               </div>
 
               {/* Telemetry Snapshot Row */}
@@ -142,7 +132,7 @@ export default function DetailNodeA() {
                 >
                   <span className="text-[12px] text-[#64748b]">Kel. Tanah</span>
                   <span className="text-[18px] font-bold text-[#dc2626] my-0.5">32%</span>
-                  <span className="text-[11.5px] text-[#dc2626] font-medium">Kering / Kritis ⚠</span>
+                  <span className="text-[11.5px] text-[#264d59] font-medium">Cukup</span>
                 </div>
               </div>
             </div>
@@ -152,7 +142,7 @@ export default function DetailNodeA() {
               className="bg-white border border-[#e3e8f0] rounded-[12px] p-[16px] shadow-[0_1px_3px_rgba(0,0,0,0.02)] flex flex-col gap-[10px]"
               data-node-id="507:3867"
             >
-              <h3 className="text-[14px] font-bold text-[#0f172a]" data-node-id="507:3868">
+              <h3 className="text-[14px] font-medium text-[#0f172a]" data-node-id="507:3868">
                 Detail Analisis Model AI
               </h3>
 
@@ -201,14 +191,14 @@ export default function DetailNodeA() {
               >
                 <Info className="size-4 text-[#1d4ed8] shrink-0 mt-0.5" />
                 <p className="text-[11.5px] text-[#1e40af] leading-normal" data-node-id="512:4003">
-                  <strong>Peringatan Diagnosis:</strong> Tingkat keyakinan model bukan persentase tanaman terinfeksi atau kepastian diagnosis, melainkan indeks probabilitas visual.
+                  <strong>ℹ Peringatan Diagnosis:</strong> Tingkat keyakinan model bukan persentase tanaman terinfeksi atau kepastian diagnosis, melainkan indeks probabilitas visual.
                 </p>
               </div>
             </div>
           </div>
 
           {/* Right Column: Mengapa CAPSI & Protokol Lapangan (Exact 566px) */}
-          <div className="flex flex-col gap-[14px]" data-node-id="507:3884">
+          <div className="flex flex-col gap-[14px] h-full" data-node-id="507:3884">
             {/* Card: Mengapa CAPSI Memberi Peringatan? */}
             <div
               className="bg-[#f8fafc] border border-[#e2e8f0] rounded-[12px] p-[14px] shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex flex-col gap-[8px]"
@@ -223,9 +213,9 @@ export default function DetailNodeA() {
               </p>
             </div>
 
-            {/* Card: Protokol Lapangan (Hijau Gelap #064e3b) */}
+            {/* Card: Protokol Lapangan (Hijau Gelap #064e3b) - Stretches to fill column height */}
             <div
-              className="bg-[#064e3b] text-white rounded-[12px] p-[16px] shadow-[0_4px_16px_rgba(6,78,59,0.18)] flex flex-col justify-between gap-[12px]"
+              className="bg-[#064e3b] text-white rounded-[12px] p-[16px] shadow-[0_4px_16px_rgba(6,78,59,0.18)] flex-1 flex flex-col justify-between gap-[12px]"
               data-node-id="507:3885"
             >
               <div className="flex items-start gap-2.5" data-node-id="507:3886">
@@ -241,14 +231,14 @@ export default function DetailNodeA() {
               </div>
 
               {/* 4 Action Steps */}
-              <div className="space-y-[8px]" data-node-id="507:3890">
+              <div className="flex-1 flex flex-col justify-between gap-[8px] my-1" data-node-id="507:3890">
                 {/* Step 1 */}
                 <div
-                  className="bg-[#094030]/80 rounded-[8px] px-[10px] py-[8px] flex items-center gap-[10px]"
+                  className="bg-[#094030]/80 rounded-[8px] px-[12px] py-[10px] flex items-center gap-[10px]"
                   data-node-id="507:3891"
                 >
                   <div
-                    className="size-[18px] rounded-full bg-[#a6f2d1] text-[#054f3b] text-[11px] font-bold flex items-center justify-center shrink-0"
+                    className="size-[20px] rounded-full bg-[#a6f2d1] text-[#054f3b] text-[11px] font-bold flex items-center justify-center shrink-0"
                     data-node-id="507:3892"
                   >
                     1
@@ -265,11 +255,11 @@ export default function DetailNodeA() {
 
                 {/* Step 2 */}
                 <div
-                  className="bg-[#094030]/80 rounded-[8px] px-[10px] py-[8px] flex items-center gap-[10px]"
+                  className="bg-[#094030]/80 rounded-[8px] px-[12px] py-[10px] flex items-center gap-[10px]"
                   data-node-id="507:3895"
                 >
                   <div
-                    className="size-[18px] rounded-full bg-[#a6f2d1] text-[#054f3b] text-[11px] font-bold flex items-center justify-center shrink-0"
+                    className="size-[20px] rounded-full bg-[#a6f2d1] text-[#054f3b] text-[11px] font-bold flex items-center justify-center shrink-0"
                     data-node-id="507:3896"
                   >
                     2
@@ -286,11 +276,11 @@ export default function DetailNodeA() {
 
                 {/* Step 3 */}
                 <div
-                  className="bg-[#094030]/80 rounded-[8px] px-[10px] py-[8px] flex items-center gap-[10px]"
+                  className="bg-[#094030]/80 rounded-[8px] px-[12px] py-[10px] flex items-center gap-[10px]"
                   data-node-id="507:3899"
                 >
                   <div
-                    className="size-[18px] rounded-full bg-[#a6f2d1] text-[#054f3b] text-[11px] font-bold flex items-center justify-center shrink-0"
+                    className="size-[20px] rounded-full bg-[#a6f2d1] text-[#054f3b] text-[11px] font-bold flex items-center justify-center shrink-0"
                     data-node-id="507:3900"
                   >
                     3
@@ -307,11 +297,11 @@ export default function DetailNodeA() {
 
                 {/* Step 4 */}
                 <div
-                  className="bg-[#094030]/80 rounded-[8px] px-[10px] py-[8px] flex items-center gap-[10px]"
+                  className="bg-[#094030]/80 rounded-[8px] px-[12px] py-[10px] flex items-center gap-[10px]"
                   data-node-id="507:3903"
                 >
                   <div
-                    className="size-[18px] rounded-full bg-[#a6f2d1] text-[#054f3b] text-[11px] font-bold flex items-center justify-center shrink-0"
+                    className="size-[20px] rounded-full bg-[#a6f2d1] text-[#054f3b] text-[11px] font-bold flex items-center justify-center shrink-0"
                     data-node-id="507:3904"
                   >
                     4
@@ -328,8 +318,8 @@ export default function DetailNodeA() {
               </div>
 
               {/* Rujukan Note */}
-              <div className="pt-1 border-t border-[#047857]/40 text-[11.5px] text-[#a7f3d0]" data-node-id="507:3907">
-                🛡 Rujukan: Panduan Teknis Pengendalian OPT Cabai Kementan RI
+              <div className="pt-2 border-t border-[#047857]/40 text-[11.5px] text-[#a7f3d0]" data-node-id="507:3907">
+                🛡 Rujukan: Panduan Teknis Pengendalian OPT Cabai Kementan
               </div>
             </div>
           </div>
