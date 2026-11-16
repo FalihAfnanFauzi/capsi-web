@@ -6,7 +6,7 @@ import Image from "next/image";
 import { User, ChevronDown, LogOut, ArrowLeft } from "lucide-react";
 
 interface DashboardNavbarProps {
-  activeTab?: "beranda" | "monitoring" | "peringatan" | "riwayat";
+  activeTab?: "beranda" | "monitoring" | "peringatan" | "riwayat" | "profil";
 }
 
 export default function DashboardNavbar({ activeTab = "beranda" }: DashboardNavbarProps) {
@@ -107,6 +107,19 @@ export default function DashboardNavbar({ activeTab = "beranda" }: DashboardNavb
                 <p className="text-[14px] font-semibold text-[#0d1c2e] truncate">Kawan AgroBersama</p>
                 <p className="text-[11px] text-[#16a34a]">Mitra Budidaya Sumedang</p>
               </div>
+
+              <Link
+                href="/profil"
+                className={`flex items-center gap-2 px-4 py-2 text-[13px] transition-colors ${
+                  activeTab === "profil"
+                    ? "bg-[#ecfdf5] text-[#003622] font-semibold"
+                    : "text-[#475569] hover:bg-[#f8fafc] hover:text-[#003622]"
+                }`}
+                onClick={() => setProfileDropdownOpen(false)}
+              >
+                <User className="size-4" />
+                <span>Pengaturan Profil</span>
+              </Link>
 
               <Link
                 href="/"
